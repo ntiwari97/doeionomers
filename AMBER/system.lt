@@ -1,0 +1,14 @@
+import "/home/nick/Documents/DOEIonomers/AMBER/teflon.lt"
+
+# Periodic boundary conditions:
+write_once("Data Boundary") {
+   0.0  62.4  xlo xhi
+   0.0  62.4  ylo yhi
+   0.0  62.4  zlo zhi
+}
+
+molecules = new Teflon     #[12].move(0, 0, 5.2)
+                           #[12].move(0, 5.2, 0)
+                          # [2].move(5.2, 0, 0)
+                          
+                          

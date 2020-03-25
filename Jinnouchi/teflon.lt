@@ -1,0 +1,33 @@
+import "/home/nick/Documents/DOEIonomers/ptfeff.lt"
+import "/home/nick/Documents/DOEIonomers/cf2group.lt"
+
+
+Teflon inherits ptfeff{
+
+
+  monomers = new CF2 [2].rot(180,1,0,0).move(1.5,0,0)
+
+  # Now add a list of bonds connecting the carbon atoms together:
+
+  write('Data Bond List') {
+    $bond:b1  $atom:monomers[0]/c $atom:monomers[1]/c
+    # $bond:b2  $atom:monomers[1]/c $atom:monomers[2]/c
+    # $bond:b3  $atom:monomers[2]/c $atom:monomers[3]/c
+    # $bond:b4  $atom:monomers[3]/c $atom:monomers[4]/c
+    # $bond:b5  $atom:monomers[4]/c $atom:monomers[5]/c
+    # $bond:b6  $atom:monomers[5]/c $atom:monomers[6]/c
+    # $bond:b7  $atom:monomers[6]/c $atom:monomers[7]/c
+    # $bond:b8  $atom:monomers[7]/c $atom:monomers[8]/c
+    # $bond:b9  $atom:monomers[8]/c $atom:monomers[9]/c
+    # $bond:b10  $atom:monomers[9]/c $atom:monomers[10]/c
+    # $bond:b11  $atom:monomers[10]/c $atom:monomers[11]/c
+    # $bond:b12  $atom:monomers[11]/c $atom:monomers[12]/c
+    # $bond:b13 $atom:monomers[12]/c $atom:monomers[13]/c
+    # $bond:b14  $atom:monomers[13]/c $atom:monomers[14]/c
+    # $bond:b15  $atom:monomers[14]/c $atom:monomers[15]/c
+  }
+
+} # Teflon
+
+
+
