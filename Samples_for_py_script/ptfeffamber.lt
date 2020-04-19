@@ -1,0 +1,118 @@
+ptfeff{
+
+  write_once("In Init"){
+    units	 real #Set units system
+    atom_style	 full
+    bond_style	 harmonic
+    angle_style	 harmonic
+    dihedral_style	fourier
+    pair_style	 lj/cut/coul/long 10  #Argument is cutoff radius
+    pair_modify mix geometric shift yes #Regular mixing rule
+    special_bonds amber #This is an ASSUMPTION for the weighting parameters for 
+    kspace_style ewald 1e-5 #Set solver for coulombic interactions
+  }
+
+
+#Teflon contains Fluorine and Carbon
+ write_once("Data Masses"){
+   @atom:F 18.9984
+   @atom:C 12.0107
+   @atom:Oe 15.999
+   @atom:S 32.065
+   @atom:Os 15.999
+}
+
+#----------------------------Non-bonded pair interactions------------------------------------
+#	            i	     j	      eps  sig
+
+  write_once("In Settings"){
+     pair_coeff  @atom:F  @atom:F    0.0530 3.3113
+     pair_coeff  @atom:C  @atom:C    0.0660 3.9286
+     pair_coeff  @atom:Oe @atom:Oe   0.1400 3.2551
+     pair_coeff  @atom:Os @atom:Os   0.1700 3.3225
+     pair_coeff  @atom:S  @atom:S    0.2500 3.9847  
+  }
+
+#-----------------------------Bonded pair interactions---------------------------------------
+  write_once("Data Bonds By Type"){
+  @bond:C,F  @atom:C @atom:F
+  @bond:C,C  @atom:C @atom:C
+  @bond:C,S  @atom:C @atom:S
+  @bond:C,Oe @atom:C @atom:Oe
+  @bond:Os,S @atom:Os @atom:S
+  }
+   #                               r0      k1                  
+
+  write_once("In Settings"){
+    bond_coeff @bond:C,F         338.8046  1.3485 
+    bond_coeff @bond:C,C         276.0580  1.5356   
+    bond_coeff @bond:C,S         176.4593  1.8545
+    bond_coeff @bond:C,Oe        297.7457  1.3622
+    bond_coeff @bond:Os,S        587.9230  1.4800    
+  }
+
+#                            ~~~Angle Interactions~~~
+
+ #                                   k1    theta0      
+  write_once("In Settings"){
+    angle_coeff @angle:C,C,C      44.4644  109.0639   
+    angle_coeff @angle:F,C,F      85.7607  107.9771
+    angle_coeff @angle:C,C,F      60.7610  106.7816 
+    angle_coeff @angle:C,C,S      18.3324  115.2954
+    angle_coeff @angle:C,C,Oe     43.5794  110.7657
+    angle_coeff @angle:C,S,Os	  62.4607  112.0818
+    angle_coeff @angle:Os,S,Os    98.8656  125.8476
+    angle_coeff @angle:F,C,Oe     63.9312  108.9077
+    angle_coeff @angle:F,C,S      33.5332  109.7797
+    angle_coeff @angle:C,Oe,C     117.1048 120.6078
+  }
+
+  write_once("Data Angles By Type"){
+    @angle:C,C,C  @atom:C @atom:C @atom:C  
+    @angle:F,C,F  @atom:F @atom:C @atom:F  
+    @angle:C,C,F  @atom:C @atom:C @atom:F  
+    @angle:C,C,S  @atom:C @atom:C @atom:S
+    @angle:C,C,Oe @atom:C @atom:C @atom:Oe
+    @angle:C,S,Os @atom:C @atom:S @atom:Os
+    @angle:Os,S,Os @atom:Os @atom:S @atom:Os
+    @angle:F,C,Oe @atom:F @atom:C @atom:Oe
+    @angle:F,C,S @atom:F @atom:C @atom:S
+    @angle:C,Oe,C @atom:C @atom:Oe @atom:C
+  }
+#                            ~~~Dihedral Interactions~~~
+
+  write_once("In Settings"){
+    dihedral_coeff @dihedral:CCCC      3 0.2 1 0 -0.099 2 3.14159 0.0785 3 0
+    dihedral_coeff @dihedral:CCCF      3 0 1 0 0 2 3.14159 0.0785 3 0
+    dihedral_coeff @dihedral:FCCF      3 0 1 0 0 2 3.14159 -0.0245 3 0 
+    dihedral_coeff @dihedral:CCCOe     3 0 1 0 1.92715 2 3.14159 0.48995 3 0
+    dihedral_coeff @dihedral:FCCOe     3 0 1 0 2.2974 2 3.14159 0.0846 3 0
+    dihedral_coeff @dihedral:COeCF     3 0 1 0 0.85995 2 3.14159 0.0412 3 0
+    dihedral_coeff @dihedral:CCOeC     3 0 1 0 0.8853 2 3.14159 0.22025 3 0
+    dihedral_coeff @dihedral:OeCCS     3 0 1 0 0.25175 2 3.14159 0.3125 3 0
+    dihedral_coeff @dihedral:FCCS      3 0 1 0 -1.6541 2 3.14159 0.0306 3 0
+    dihedral_coeff @dihedral:CCSOs     3 0 1 0 1.2385 2 3.14159 -0.0739 3 0
+    dihedral_coeff @dihedral:FCSOs     3 0 1 0 1.4879 2 3.14159 0.1545 3 0
+    dihedral_coeff @dihedral:OeCCOe    3 0 1 0 3.7986 2 3.14159 0.6465 3 0
+
+  }
+  write_once("Data Dihedrals By Type"){
+    @dihedral:CCCC  @atom:C @atom:C @atom:C @atom:C
+    @dihedral:CCCF  @atom:C @atom:C @atom:C @atom:F
+    @dihedral:FCCF  @atom:F @atom:C @atom:C @atom:F
+    @dihedral:CCCOe @atom:C @atom:C @atom:C @atom:Oe
+    @dihedral:FCCOe @atom:F @atom:C @atom:C @atom:Oe
+    @dihedral:COeCF @atom:C @atom:Oe @atom:C @atom:F
+    @dihedral:CCOeC @atom:C @atom:C @atom:Oe @atom:C
+    @dihedral:OeCCS @atom:Oe @atom:C @atom:C @atom:S
+    @dihedral:FCCS @atom:F @atom:C @atom:C @atom:S
+    @dihedral:CCSOs @atom:C @atom:C @atom:S @atom:Os
+    @dihedral:FCSOs @atom:F @atom:C @atom:S @atom:Os
+    @dihedral:OeCCOe @atom:Oe @atom:C @atom:C @atom:Oe
+
+  }
+
+
+} #ptfeff
+ 
+  

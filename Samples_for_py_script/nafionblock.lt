@@ -1,0 +1,65 @@
+import "/home/nick/Documents/DOEIonomers/AMBER/ptfeffamber.lt"
+import "/home/nick/Documents/DOEIonomers/AMBER/cf2group.lt"
+
+nafionblock inherits ptfeff{
+
+  write('Data Atoms') {
+    # atom-id  mol-id   atom-type  charge   x             y                z
+      $atom:c1 $mol:...  @atom:C   0.2164   0.00000      0.000000         0.00000
+      $atom:f1n $mol:... @atom:F   -0.1082  0.00000      0.786040         1.09017
+      $atom:f2n $mol:... @atom:F   -0.1082  0.00000      0.786040        -1.09017
+      $atom:c2 $mol:...  @atom:C   0.1983   1.53560      0.000000         0.00000
+      $atom:f3n $mol:... @atom:F   -0.1082  1.53560      0.783269         1.09769
+      $atom:o1n $mol:... @atom:Oe  -0.1802  1.53560      0.791227        -1.10885
+      $atom:c3  $mol:... @atom:C   0.3065   1.53560      0.143343        -2.29211
+      $atom:f4n $mol:... @atom:F   -0.1082  0.44480      -0.64950        -2.29211
+      $atom:f5n $mol:... @atom:F   -0.1082  2.62640      -0.64950        -2.29211
+      $atom:c4  $mol:... @atom:C   0.1983   1.53560      1.036597        -3.54117
+      $atom:f6n  $mol:... @atom:F  -0.1082  0.43840      1.820557        -3.54117
+      $atom:o2n  $mol:... @atom:Oe -0.1802  2.62380      1.820557        -3.54117
+      $atom:c5 $mol:...  @atom:C    0.3065  3.80709      1.145723        -3.54117
+      $atom:f7n $mol:... @atom:F   -0.1082  3.80709      1.938570        -2.45036
+      $atom:f8n $mol:... @atom:F   -0.1082  3.80709      1.938570        -4.63200
+      $atom:c6 $mol:...  @atom:C   -0.0805  5.07083      2.018083        -3.54117
+      $atom:f12n $mol:... @atom:F  -0.1082  5.07083      1.938570        -2.45036
+      $atom:f13n $mol:... @atom:F  -0.1082  5.07083      1.938570        -4.63200
+      $atom:s $mol:...   @atom:S    1.0559  6.63746      1.025680        -3.54117
+      $atom:o1s $mol:... @atom:Os   -0.5863  7.86502      1.852409        -3.54117
+      $atom:o2s $mol:... @atom:Os   -0.5863  6.63746      1.852409        -2.71444
+      $atom:o3s $mol:... @atom:Os   -0.5863  6.63746      1.852409        -4.36790
+      $atom:c7 $mol:... @atom:C     0.3246  1.53560      0.145567        -4.79182
+      $atom:f9n $mol:... @atom:F   -0.1082  1.53560      0.949750        -5.87429
+      $atom:f10n $mol:... @atom:F  -0.1082  0.45312      0.949750        -4.79182
+      $atom:f11n $mol:... @atom:F  -0.1082  2.61807      0.949750        -4.79182
+    }
+
+
+  write('Data Bond List'){
+    $bond:c1f1 $atom:c1 $atom:f1n
+    $bond:c1f2 $atom:c1 $atom:f2n
+    $bond:c1c2 $atom:c1 $atom:c2
+    $bond:c2f3 $atom:c2 $atom:f3n
+    $bond:c2o1 $atom:c2 $atom:o1n
+    $bond:c3o1 $atom:c3 $atom:o1n
+    $bond:c3f4 $atom:c3 $atom:f4n
+    $bond:c3f5 $atom:c3 $atom:f5n
+    $bond:c4f6 $atom:c4 $atom:f6n
+    $bond:c4o2 $atom:c4 $atom:o2n
+    $bond:c3c4 $atom:c3 $atom:c4
+    $bond:o2c5 $atom:o2n $atom:c5
+    $bond:c5f7 $atom:c5  $atom:f7n
+    $bond:c5f8 $atom:c5  $atom:f8n
+    $bond:c5c6 $atom:c5 $atom:c6
+    $bond:c6f12 $atom:c6 $atom:f12n
+    $bond:c6f13 $atom:c6 $atom:f13n
+    $bond:c6s $atom:c6 $atom:s
+    $bond:so1s $atom:s $atom:o1s
+    $bond:so2s $atom:s $atom:o2s
+    $bond:so3s $atom:s $atom:o3s
+    $bond:c4c7 $atom:c4 $atom:c7
+    $bond:c7f9 $atom:c7 $atom:f9n
+    $bond:c7f10 $atom:c7 $atom:f10n
+    $bond:c7f11 $atom:c7 $atom:f11n
+
+}
+}
