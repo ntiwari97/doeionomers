@@ -1,0 +1,17 @@
+import "/home/nick/Documents/DOEIonomers/AMBER/ptfeffamber.lt"
+
+CF2 inherits ptfeff {
+  write("Data Atoms"){
+  # atom-id  mol-id   atom-type  charge   x             y                z
+    $atom:c   $mol:... @atom:C    0.2164    0.000000    0.000000      0.000000
+    $atom:f1  $mol:... @atom:F    -0.1082    0.000000     0.78604      1.09017
+    $atom:f2  $mol:... @atom:F    -0.1082    0.000000     0.78604      -1.09017
+  }
+
+  write("Data Bond List"){
+    $bond:cf1  $atom:c  $atom:f1
+    $bond:cf2  $atom:c  $atom:f2
+ #   $bond:cf3  $atom:c  $atom:f3
+
+  }
+} #CF2
